@@ -1,4 +1,4 @@
-@push('head')
+@push(isset($push) ? $push : 'head')
     <script>
         let jodieEditorConnectorURL = '{{ url("/") }}/vendor/lnch/laravel-blog/connector/index.php';
     </script>
