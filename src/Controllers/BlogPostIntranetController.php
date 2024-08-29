@@ -86,10 +86,10 @@ class BlogPostIntranetController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param BlogPostRequest|Request $request
+     * @param BlogPostIntranetRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BlogPostRequest $request)
+    public function store(BlogPostIntranetRequest $request)
     {
         if(auth()->user()->cannot("create", BlogPost::class)) {
             abort(403);
@@ -190,12 +190,12 @@ class BlogPostIntranetController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param BlogPostRequest $request
+     * @param BlogPostIntranetRequest $request
      * @param BlogPost        $post
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function update(BlogPostRequest $request, $post)
+    public function update(BlogPostIntranetRequest $request, $post)
     {
         $post = $this->postModel->findOrFail($post);
 
