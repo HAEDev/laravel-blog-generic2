@@ -5,7 +5,7 @@ namespace Lnch\LaravelBlog\Events;
 use Illuminate\Queue\SerializesModels;
 use Lnch\LaravelBlog\Models\BlogPostIntranet as BlogPost;
 
-class BlogPostCreated
+class BlogPostIntranetCreated
 {
     use SerializesModels;
 
