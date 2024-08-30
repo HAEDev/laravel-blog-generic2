@@ -22,6 +22,8 @@ class BlogPostIntranet extends BlogModel
         'slug',
         'fb_slug',
         'video_link',
+        'poll_survey_link',
+        'is_poll_survey',
         'content',
         'blog_image_id',
         'status',

@@ -57,7 +57,9 @@ class BlogPostIntranetRequest extends FormRequest
             'show_featured'     => 'sometimes|boolean',
             'tenants'           => 'array',
             'tenants.*'         => "in:" . implode(',', $tenantsRepository->getAll()->pluck("id")->toArray()),
-            'video_link'        => 'string|max:190'
+            'video_link'        => 'string|max:190',
+            'poll_survey_link'  => 'string|max:190',
+            'is_poll_survey'    => 'sometimes|boolean'
         ]);
 
         $siteId = getBlogSiteID();

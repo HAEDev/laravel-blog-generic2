@@ -157,6 +157,18 @@
                 </div> <!-- End .content -->
             </div> <!-- End .laravel-blog-sidebar-block -->
         @endif
+        
+        @if(config("laravel-blog.poll_survey.enabled"))
+            <div class="laravel-blog-sidebar-block">
+                <div class="title">Poll Survey Link</div>
+                <div class="content">
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" name="poll_survey_link" id="poll_survey_link" value="{{ $post->poll_survey_link }}" /><br />
+                        <input type="checkbox" name="is_poll_survey" id="is_poll_survey" value="1" @if(isset($post) && $post->is_poll_survey) checked @endif /> Is Poll / Survey
+                    </div>
+                </div> <!-- End .content -->
+            </div> <!-- End .laravel-blog-sidebar-block -->
+        @endif
 
         @if(config("laravel-blog.categories.enabled"))
             <div class="laravel-blog-sidebar-block">
