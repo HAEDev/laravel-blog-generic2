@@ -152,7 +152,7 @@
                 <div class="title">Video Link</div>
                 <div class="content">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" name="video_link" id="video_link" value="{{ $post->video_link }}" /><br />
+                        <input type="text" class="form-control form-control-sm" name="video_link" id="video_link" value="{{ isset($post) ? $post->video_link : null }}" /><br />
                     </div>
                 </div> <!-- End .content -->
             </div> <!-- End .laravel-blog-sidebar-block -->
@@ -163,7 +163,7 @@
                 <div class="title">Poll Survey Link</div>
                 <div class="content">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" name="poll_survey_link" id="poll_survey_link" value="{{ $post->poll_survey_link }}" /><br />
+                        <input type="text" class="form-control form-control-sm" name="poll_survey_link" id="poll_survey_link" value="{{ isset($post) ? $post->poll_survey_link : null }}" /><br />
                         <input type="checkbox" name="is_poll_survey" id="is_poll_survey" value="1" @if(isset($post) && $post->is_poll_survey) checked @endif /> Is Poll / Survey
                     </div>
                 </div> <!-- End .content -->
