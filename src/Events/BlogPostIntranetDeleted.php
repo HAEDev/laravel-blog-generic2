@@ -3,9 +3,9 @@
 namespace Lnch\LaravelBlog\Events;
 
 use Illuminate\Queue\SerializesModels;
-use Lnch\LaravelBlog\Models\BlogPostIntranet as BlogPost;
+use Lnch\LaravelBlog\Models\BlogPost;
 
-class BlogPostIntranetCreated
+class BlogPostIntranetDeleted
 {
     use SerializesModels;
 

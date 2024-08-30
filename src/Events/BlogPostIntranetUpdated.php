@@ -5,10 +5,11 @@ namespace Lnch\LaravelBlog\Events;
 use Illuminate\Queue\SerializesModels;
 use Lnch\LaravelBlog\Models\BlogPostIntranet as BlogPost;
 
-class BlogPostIntranetCreated
+class BlogPostIntranetUpdated
 {
     use SerializesModels;
 
+    public $oldPost;
     public $post;
 
     /**
@@ -17,8 +18,9 @@ class BlogPostIntranetCreated
      * @param BlogPost $post
      * @retun void
      */
-    public function __construct(BlogPost $post)
+    public function __construct(BlogPost $oldPost, BlogPost $newPost)
     {
-        $this->post = $post;
+        $this->oldPost = $oldPost;
+        $this->post = $newPost;
     }
 }

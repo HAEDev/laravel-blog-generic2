@@ -3,7 +3,7 @@
 namespace Lnch\LaravelBlog\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Lnch\LaravelBlog\Models\BlogPost;
+use Lnch\LaravelBlog\Models\BlogPostIntranet;
 use App\Repositories\Tenants\TenantsRepository;
 
 class BlogPostIntranetRequest extends FormRequest
@@ -39,7 +39,7 @@ class BlogPostIntranetRequest extends FormRequest
     {
         $rules = [];
 
-        $statuses = implode(",", array_keys(BlogPost::statuses()));
+        $statuses = implode(",", array_keys(BlogPostIntranet::statuses()));
         $tenantsRepository = resolve(TenantsRepository::class);
 
         $rules = array_merge($rules, [
@@ -57,6 +57,7 @@ class BlogPostIntranetRequest extends FormRequest
             'show_featured'     => 'sometimes|boolean',
             'tenants'           => 'array',
             'tenants.*'         => "in:" . implode(',', $tenantsRepository->getAll()->pluck("id")->toArray()),
+            'video_link'        => 'string|max:190'
         ]);
 
         $siteId = getBlogSiteID();

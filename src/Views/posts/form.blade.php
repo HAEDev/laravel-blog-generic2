@@ -146,6 +146,17 @@
                 </label>
             </div> <!-- End .laravel-blog-sidebar-block -->
         @endif
+        
+        @if(config("laravel-blog.videos.enabled"))
+            <div class="laravel-blog-sidebar-block">
+                <div class="title">Video Link</div>
+                <div class="content">
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" name="video_link" id="video_link" value="{{ $post->video_link }}" /><br />
+                    </div>
+                </div> <!-- End .content -->
+            </div> <!-- End .laravel-blog-sidebar-block -->
+        @endif
 
         @if(config("laravel-blog.categories.enabled"))
             <div class="laravel-blog-sidebar-block">

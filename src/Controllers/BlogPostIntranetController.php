@@ -2,11 +2,11 @@
 
 namespace Lnch\LaravelBlog\Controllers;
 
-use Lnch\LaravelBlog\Events\BlogPostCreated;
-use Lnch\LaravelBlog\Events\BlogPostDeleted;
-use Lnch\LaravelBlog\Events\BlogPostUpdated;
-use Lnch\LaravelBlog\Models\BlogPost;
-use Lnch\LaravelBlog\Requests\BlogPostIntranetRequest;
+use Lnch\LaravelBlog\Events\BlogPostIntranetCreated as BlogPostCreated;
+use Lnch\LaravelBlog\Events\BlogPostIntranetDeleted as BlogPostDeleted;
+use Lnch\LaravelBlog\Events\BlogPostIntranetUpdated as BlogPostUpdated;
+use Lnch\LaravelBlog\Models\BlogPostIntranet as BlogPost;
+use Lnch\LaravelBlog\Requests\BlogPostIntranetRequest as BlogPostRequest;
 use App\Repositories\Tenants\TenantsRepository;
 
 class BlogPostIntranetController extends Controller
@@ -86,15 +86,15 @@ class BlogPostIntranetController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param BlogPostIntranetRequest|Request $request
+     * @param BlogPostRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BlogPostIntranetRequest $request)
+    public function store(BlogPostRequest $request)
     {
         if(auth()->user()->cannot("create", BlogPost::class)) {
             abort(403);
         }
-
+        
         $siteId = getBlogSiteID();
 
         $published_at = date("Y-m-d H:i:s",
@@ -109,6 +109,7 @@ class BlogPostIntranetController extends Controller
             'title' => $request->title,
             'slug' =>  $slug,
             'fb_slug' =>  $slug,
+            'video_link' =>  $request->video_link,
             'content' => $request->post_content,
             'status' => $request->status,
             'format' => BlogPost::FORMAT_STANDARD,
@@ -190,12 +191,12 @@ class BlogPostIntranetController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param BlogPostIntranetRequest $request
+     * @param BlogPostRequest $request
      * @param BlogPost        $post
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function update(BlogPostIntranetRequest $request, $post)
+    public function update(BlogPostRequest $request, $post)
     {
         $post = $this->postModel->findOrFail($post);
 
@@ -220,6 +221,7 @@ class BlogPostIntranetController extends Controller
             'title' => $request->title,
             'slug' => $slug,
             'fb_slug' => $slug,
+            'video_link' => $request->video_link,
             'content' => $request->post_content,
             'status' => $request->status,
             'comments_enabled' => boolval($request->comments_enabled),
