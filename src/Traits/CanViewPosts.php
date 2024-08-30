@@ -2,7 +2,7 @@
 
 namespace Lnch\LaravelBlog\Traits;
 
-use Lnch\LaravelBlog\Models\BlogPost;
+use Lnch\LaravelBlog\Models\BlogPostIntranet as BlogPost;
 
 trait CanViewPosts
 {
