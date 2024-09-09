@@ -8,6 +8,7 @@ use Lnch\LaravelBlog\Events\BlogPostIntranetUpdated as BlogPostUpdated;
 use Lnch\LaravelBlog\Models\BlogPostIntranet as BlogPost;
 use Lnch\LaravelBlog\Requests\BlogPostIntranetRequest as BlogPostRequest;
 use App\Repositories\Tenants\TenantsRepository;
+use Illuminate\Http\Request;
 
 class BlogPostIntranetController extends Controller
 {
@@ -25,16 +26,23 @@ class BlogPostIntranetController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param BlogPostRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if(auth()->user()->cannot("view", BlogPost::class)) {
             abort(403);
         }
-
-        $posts = $this->postModel->scopeTenantRestriction($this->postModel->orderBy("is_featured", "desc")->orderBy("published_at", "desc"));
         
+        $posts = $this->postModel->orderBy("is_featured", "desc")->orderBy("published_at", "desc");
+                
+        if ($request->is_poll_survey) {
+            $posts = $this->postModel->where('is_poll_survey', $request->is_poll_survey);
+        }
+        
+        $posts = $this->postModel->scopeTenantRestriction($posts);
+                
         // Separate scheduled if necessary
         if (config("laravel-blog.posts.separate_scheduled", false) === true) {
             $posts = $posts->whereRaw("TIMESTAMP(published_at) < NOW()");
