@@ -39,6 +39,10 @@ class BlogPost extends BlogModel
         'updated_at',
         'deleted_at',
     ];
+    
+    protected $casts = [
+        'is_poll_survey' => 'boolean'
+    ];
 
     /**
      * Retrieves all categories associated with this post.
