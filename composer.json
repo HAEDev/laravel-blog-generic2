@@ -1,6 +1,11 @@
 {
-    "name": "haedev/laravel-blog-generic",
+    "name": "haedev/laravel-blog-generic2",
+    "exportName": "haedev/laravel-blog-generic2",
     "description": "A complete Blog module, with category, tag, and images",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/haedev/laravel-blog-generic2.git"
+    },
     "authors": [
         {
             "name": "Tom Lynch",
