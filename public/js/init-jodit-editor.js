@@ -1,4 +1,5 @@
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function(e) {
+    
     const editor = Jodit.make('#post_content', {
         uploader: {
             url: jodieEditorConnectorURL,
@@ -12,4 +13,5 @@ $(document).ready(function() {
             }
         }
     });
+    
 });

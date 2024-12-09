@@ -7,7 +7,6 @@ use Lnch\LaravelBlog\Events\BlogPostDeleted;
 use Lnch\LaravelBlog\Events\BlogPostUpdated;
 use Lnch\LaravelBlog\Models\BlogPost;
 use Lnch\LaravelBlog\Requests\BlogPostRequest;
-use App\Repositories\Tenants\TenantsRepository;
 
 class BlogPostController extends Controller
 {
