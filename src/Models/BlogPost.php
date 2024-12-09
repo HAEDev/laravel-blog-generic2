@@ -33,11 +33,11 @@ class BlogPost extends BlogModel
         'show_featured'
     ];
 
-    public $dates = [
-        'published_at',
-        'created_at',
-        'updated_at',
-        'deleted_at',
+    public $casts = [
+        'published_at' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime',
     ];
 
     /**

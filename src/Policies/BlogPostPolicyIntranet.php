@@ -2,7 +2,7 @@
 
 namespace Lnch\LaravelBlog\Policies;
 
-use Lnch\LaravelBlog\Models\BlogPost as BlogPost;
+use Lnch\LaravelBlog\Models\BlogPostIntranet as BlogPost;
 use Lnch\LaravelBlog\Contracts\BlogPostPolicyInterface;
 
 class BlogPostPolicy extends BasePolicy implements BlogPostPolicyInterface

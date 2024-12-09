@@ -11,12 +11,10 @@ use App\Repositories\Tenants\TenantsRepository;
 
 class BlogPostController extends Controller
 {
-    public function __construct(TenantsRepository $tenants)
+    public function __construct()
     {
         parent::__construct();
         
-        $this->tenants = $tenants;
-
         if (config("laravel-blog.use_auth_middleware", false)) {
             $this->middleware("auth");
         }
@@ -33,7 +31,7 @@ class BlogPostController extends Controller
             abort(403);
         }
 
-        $posts = $this->postModel->scopeTenantRestriction($this->postModel->orderBy("is_featured", "desc")->orderBy("published_at", "desc"));
+        $posts = $this->postModel->orderBy("is_featured", "desc")->orderBy("published_at", "desc");
         
         // Separate scheduled if necessary
         if (config("laravel-blog.posts.separate_scheduled", false) === true) {
@@ -78,9 +76,7 @@ class BlogPostController extends Controller
             abort(403);
         }
 
-        return view($this->viewPath."posts.editor", [
-            'tenants' => $this->tenants->getAll()
-        ]);
+        return view($this->viewPath."posts.editor");
     }
 
     /**
@@ -182,8 +178,7 @@ class BlogPostController extends Controller
         }
 
         return view($this->viewPath."posts.editor", [
-            'post' => $post,
-            'tenants' => $this->tenants->getAll()
+            'post' => $post
         ]);
     }
 
