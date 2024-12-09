@@ -2,7 +2,7 @@
 
 namespace Lnch\LaravelBlog\Contracts;
 
-use Lnch\LaravelBlog\Models\BlogPost as BlogPost;
+use Lnch\LaravelBlog\Models\BlogPostIntranet as BlogPost;
 
 interface BlogPostPolicyInterface
 {
